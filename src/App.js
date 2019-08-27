@@ -2,30 +2,14 @@ import React, { Component } from "react";
 
 import Jumbotron from './components/jumbotron/jumbotron.component';
 import Table from './components/table/table.component';
+import Form from './components/form/form.component';
 
 class App extends Component {
 
   constructor() {
     super();
     this.state = {
-      users: [
-        {
-          firstName: 'Hotman',
-          lastName: 'Paris',
-          email: 'hotman@paris.com'
-        },
-        {
-          firstName: 'Colt',
-          lastName: 'Steele',
-          email: 'colt@steele.com'
-        },
-        {
-          firstName: 'Larry',
-          lastName: 'The Bird',
-          email: 'Larry@bird.com'
-        },
-        
-      ]
+      users: []
     }
   }
 
@@ -34,6 +18,7 @@ class App extends Component {
       <div className='container'>
         <Jumbotron />
         <Table users={this.state.users} removeUser={this.removeUser}/>
+        <Form handleSubmit={this.handleSubmit}/>
       </div>
     );
   }
@@ -45,6 +30,10 @@ class App extends Component {
         return i !== index
       })
     });
+  }
+
+  handleSubmit = user => {
+    this.setState({users: [...this.state.users, user]});
   }
 
 }
