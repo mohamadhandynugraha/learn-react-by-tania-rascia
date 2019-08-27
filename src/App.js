@@ -33,10 +33,20 @@ class App extends Component {
     return (
       <div className='container'>
         <Jumbotron />
-        <Table users={this.state}/>
+        <Table users={this.state.users} removeUser={this.removeUser}/>
       </div>
     );
   }
+
+  removeUser = (index) => {
+    const { users } = this.state;
+    this.setState({
+      users: users.filter((user, i) => {
+        return i !== index
+      })
+    });
+  }
+
 }
 
 export default App;

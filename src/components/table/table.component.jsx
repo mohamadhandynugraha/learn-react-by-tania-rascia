@@ -4,11 +4,11 @@ import TableHeader from './table-header.component';
 import TableBody from './table-body.component';
 
 const Table = (props) => {
-    const { users } = props.users;
+    const { users, removeUser } = props;
     return (
-        <table className='table table-dark'>
+        <table className='table'>
             <TableHeader />
-            <TableBody users={users}/>
+            <TableBody users={users} removeUser={removeUser}/>
         </table>
     );
 }
